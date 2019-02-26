@@ -1,5 +1,5 @@
 module.exports = function () {
-    this.Given(/^Homepage for (.*)$/, function (homePage) {
+    this.Given(/^Homepage for (.*)$/, function (client, homePage) {
         client
             .page
             .home

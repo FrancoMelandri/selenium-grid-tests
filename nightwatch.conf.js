@@ -34,11 +34,6 @@ module.exports = {
 
     test_settings: {
         default: {
-            screenshots: {
-                enabled: true,
-                on_failure: true,
-                path: 'screenshots/default'
-            },
             launch_url: 'http://localhost',
             selenium_port: 4444,
             selenium_host: 'localhost',

@@ -1,12 +1,11 @@
-const apiFactory = require('../../../wrappers/apiFactory.js'),
-    urlBuilder = require('../../../utils/urlBuilder.js');
+const apiFactory = require('../../wrappers/apiFactory.js'),
+    urlBuilder = require('../../utils/urlBuilder.js');
 
 var homepage = {
     openBrowser: function (homePage) {
 
         let url = urlBuilder()
             .setHost(homePage)
-            .withEncoding()
             .build();
 
         apiFactory.create(this.api)

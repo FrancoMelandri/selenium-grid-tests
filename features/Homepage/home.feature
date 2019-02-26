@@ -5,7 +5,7 @@ Feature: Goto home pages
 
     Scenario Outline: Check homepages will be opened
 
-    Given Homepage for <homePaget>
+    Given Homepage for <homePage>
         
         Examples:
             | homePage          | 
