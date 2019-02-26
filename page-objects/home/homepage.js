@@ -2,7 +2,7 @@ const apiFactory = require('../../../wrappers/apiFactory.js'),
     urlBuilder = require('../../../utils/urlBuilder.js');
 
 var homepage = {
-    openBrowser: function () {
+    openBrowser: function (homePage) {
 
         let url = urlBuilder()
             .setHost(homePage)

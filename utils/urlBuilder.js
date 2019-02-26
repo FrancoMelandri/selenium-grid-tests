@@ -33,7 +33,7 @@ const urlBuilder = () => {
         },
 
         withTimeStamp: function () {
-            this.withQueryParameter("__t", Date.now());
+            this.withQueryParameter('__t', Date.now());
             return this;
         },
 
@@ -48,7 +48,6 @@ const urlBuilder = () => {
             _encoding = input => encodeURI(input);
             return this;
         },
-
 
         build: function () {
             return _encoding(_templateUrl

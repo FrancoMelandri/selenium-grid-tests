@@ -20,10 +20,10 @@ module.exports = {
     page_objects_path: 'page-objects',
     live_output: true,
     disable_colors: false,
-    test_workers: {
-        enabled: true,
-        workers: 'auto'
-    },
+    // test_workers: {
+    //     enabled: true,
+    //     workers: 'auto'
+    // },
 
     selenium: {
         start_process: true,
