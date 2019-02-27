@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites>
-  <testsuite name="Feature: Goto home pages" tests="2" failures="0" errors="0" skipped="0">
-    <testcase classname="Feature: Goto home pages" name="Scenario: Check homepages will be opened"/>
-    <testcase classname="Feature: Goto home pages" name="Scenario: Check homepages will be opened"/>
-  </testsuite>
-</testsuites>
