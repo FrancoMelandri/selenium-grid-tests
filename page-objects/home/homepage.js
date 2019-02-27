@@ -9,11 +9,22 @@ var homepage = {
             .build();
 
         apiFactory.create(this.api)
-            .navigateTo(url)
-            .windowsMaximize(1000);
+            .navigateTo(url);
 
         return this;
-    }
+    },
+
+    isLoaded: function() {
+        apiFactory.create(this.api)
+            .waitUntilPageIsLoaded(1000);
+        return this;
+    },
+
+    assertIsLoaded: function(homePage) {
+        apiFactory.create(this.api)
+            .containsUrl(homePage);
+        return this;
+    },
 };
 
 module.exports = {

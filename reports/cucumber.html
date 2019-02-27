@@ -81,8 +81,8 @@ div.chart div div svg rect {
           <a class="navbar-brand" href="#">Cucumberjs Report</a>
           <div class="project-name visible-md visible-lg"></div>
           <div class="label-container">
-            <span class="label label-success">Passed: 0</span>
-            <span class="label label-danger">Failed: 1</span>
+            <span class="label label-success">Passed: 1</span>
+            <span class="label label-danger">Failed: 0</span>
           </div>
         </div>
       </div>
@@ -112,8 +112,8 @@ div.chart div div svg rect {
             <i class="glyphicon glyphicon-chevron-down"></i>
             <b>Feature:</b>Goto home pages
             <span class="label-container">
+              <span class="label label-success">2</span>
               
-              <span class="label label-danger">1</span>
               
               
             </span>
@@ -131,10 +131,10 @@ div.chart div div svg rect {
                     <i class="glyphicon glyphicon-chevron-down"></i>
                     <b>Scenario:</b>Check homepages will be opened
                     <span class="label-container">
+                      <span class="label label-success" title="Passed">3</span>
                       
                       
                       
-                      <span class="label label-danger" title="Failed">1</span>
                     </span>
                   </a>
                 </h4>
@@ -145,7 +145,7 @@ div.chart div div svg rect {
                     <p class="scenario-container">
                     
                       
-                        <span class="label label-danger" title="Failed"><i class="glyphicon glyphicon-remove"></i></span>
+                        <span class="label label-success" title="Success"><i class="glyphicon glyphicon-ok"></i></span>
                       
                     
                       <span class="text"><span class="keyword highlight">Given </span> Homepage for www.google.com</span>
@@ -153,18 +153,123 @@ div.chart div div svg rect {
                       
 
                       
-                        <a href="#error000" data-toggle="collapse">+ Show Error</a>
-                        <div id="error000" class="panel-collapse collapse">
-                          <div class="panel-body">
-                            <pre>Timed out while waiting for element &lt;body&gt; to be present for 1000 milliseconds. - Expected &quot;visible&quot; but got: &quot;not found&quot;
-    at Object.windowsMaximize (/home/fmelandri/Projects/spikes/slenium-grid-tests/wrappers/api.js:96:18)
-    at Page.openBrowser (/home/fmelandri/Projects/spikes/slenium-grid-tests/page-objects/home/homepage.js:14:14)
-    at /home/fmelandri/Projects/spikes/slenium-grid-tests/features/step_definitions/given/index.js:7:14
-    at executeInNightwatchContext.next (&lt;anonymous&gt;)
-    at code.next (&lt;anonymous&gt;)
-    at new Promise (&lt;anonymous&gt;)</pre>
-                          </div>
-                        </div>
+
+                      
+
+                       
+
+                    
+                    </p>
+                  
+                    <p class="scenario-container">
+                    
+                      
+                        <span class="label label-success" title="Success"><i class="glyphicon glyphicon-ok"></i></span>
+                      
+                    
+                      <span class="text"><span class="keyword highlight">When </span> homepage is showed</span>
+                    
+                      
+
+                      
+
+                      
+
+                       
+
+                    
+                    </p>
+                  
+                    <p class="scenario-container">
+                    
+                      
+                        <span class="label label-success" title="Success"><i class="glyphicon glyphicon-ok"></i></span>
+                      
+                    
+                      <span class="text"><span class="keyword highlight">Then </span> I except the url contains www.google.com</span>
+                    
+                      
+
+                      
+
+                      
+
+                       
+
+                    
+                    </p>
+                  
+                </div>
+              </div>
+            </div>
+          
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#collapseScenario01">
+                    <i class="glyphicon glyphicon-chevron-right"></i>
+                    <i class="glyphicon glyphicon-chevron-down"></i>
+                    <b>Scenario:</b>Check homepages will be opened
+                    <span class="label-container">
+                      <span class="label label-success" title="Passed">3</span>
+                      
+                      
+                      
+                    </span>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseScenario01" class="panel-collapse collapse">
+                <div class="panel-body">
+                  
+                    <p class="scenario-container">
+                    
+                      
+                        <span class="label label-success" title="Success"><i class="glyphicon glyphicon-ok"></i></span>
+                      
+                    
+                      <span class="text"><span class="keyword highlight">Given </span> Homepage for www.bing.com</span>
+                    
+                      
+
+                      
+
+                      
+
+                       
+
+                    
+                    </p>
+                  
+                    <p class="scenario-container">
+                    
+                      
+                        <span class="label label-success" title="Success"><i class="glyphicon glyphicon-ok"></i></span>
+                      
+                    
+                      <span class="text"><span class="keyword highlight">When </span> homepage is showed</span>
+                    
+                      
+
+                      
+
+                      
+
+                       
+
+                    
+                    </p>
+                  
+                    <p class="scenario-container">
+                    
+                      
+                        <span class="label label-success" title="Success"><i class="glyphicon glyphicon-ok"></i></span>
+                      
+                    
+                      <span class="text"><span class="keyword highlight">Then </span> I except the url contains www.bing.com</span>
+                    
+                      
+
                       
 
                       
@@ -198,14 +303,14 @@ div.chart div div svg rect {
         google.load("visualization", "1", {packages: ["corechart"]});
         google.setOnLoadCallback(function() {drawChart({
                                                             "title" : "Features",
-                                                            "failed" : 1,
-                                                            "passed" : 0
+                                                            "failed" : 0,
+                                                            "passed" : 1
                                                         })
                                             });
         google.setOnLoadCallback(function() {drawChart({
                                                             "title" : "Scenarios",
-                                                            "failed" : 1,
-                                                            "passed" : 0,
+                                                            "failed" : 0,
+                                                            "passed" : 2,
                                                             "notdefined" : 0,
                                                             "skipped" : 0
                                                         })

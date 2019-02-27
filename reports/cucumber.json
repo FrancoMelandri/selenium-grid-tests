@@ -5,7 +5,7 @@
       {
         "id": "goto-home-pages;check-homepages-will-be-opened",
         "keyword": "Scenario",
-        "line": 12,
+        "line": 14,
         "name": "Check homepages will be opened",
         "steps": [
           {
@@ -13,13 +13,87 @@
             "keyword": "Given ",
             "name": "Homepage for www.google.com",
             "result": {
-              "status": "failed",
-              "duration": 9879928322,
-              "error_message": "Timed out while waiting for element <body> to be present for 1000 milliseconds. - Expected \"visible\" but got: \"not found\"\n    at Object.windowsMaximize (/home/fmelandri/Projects/spikes/slenium-grid-tests/wrappers/api.js:96:18)\n    at Page.openBrowser (/home/fmelandri/Projects/spikes/slenium-grid-tests/page-objects/home/homepage.js:14:14)\n    at /home/fmelandri/Projects/spikes/slenium-grid-tests/features/step_definitions/given/index.js:7:14\n    at executeInNightwatchContext.next (<anonymous>)\n    at code.next (<anonymous>)\n    at new Promise (<anonymous>)"
+              "status": "passed",
+              "duration": 2436048364
             },
             "line": 8,
             "match": {
               "location": "/home/fmelandri/Projects/spikes/slenium-grid-tests/features/step_definitions/given/index.js:2"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "homepage is showed",
+            "result": {
+              "status": "passed",
+              "duration": 64721239
+            },
+            "line": 9,
+            "match": {
+              "location": "/home/fmelandri/Projects/spikes/slenium-grid-tests/features/step_definitions/when/index.js:2"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "I except the url contains www.google.com",
+            "result": {
+              "status": "passed",
+              "duration": 14776328
+            },
+            "line": 10,
+            "match": {
+              "location": "/home/fmelandri/Projects/spikes/slenium-grid-tests/features/step_definitions/then/index.js:2"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "id": "goto-home-pages;check-homepages-will-be-opened",
+        "keyword": "Scenario",
+        "line": 15,
+        "name": "Check homepages will be opened",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "Homepage for www.bing.com",
+            "result": {
+              "status": "passed",
+              "duration": 815771755
+            },
+            "line": 8,
+            "match": {
+              "location": "/home/fmelandri/Projects/spikes/slenium-grid-tests/features/step_definitions/given/index.js:2"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "homepage is showed",
+            "result": {
+              "status": "passed",
+              "duration": 59885837
+            },
+            "line": 9,
+            "match": {
+              "location": "/home/fmelandri/Projects/spikes/slenium-grid-tests/features/step_definitions/when/index.js:2"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "I except the url contains www.bing.com",
+            "result": {
+              "status": "passed",
+              "duration": 13908299
+            },
+            "line": 10,
+            "match": {
+              "location": "/home/fmelandri/Projects/spikes/slenium-grid-tests/features/step_definitions/then/index.js:2"
             }
           }
         ],

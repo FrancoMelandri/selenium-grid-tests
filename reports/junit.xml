@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="Feature: Goto home pages" tests="1" failures="1" errors="0" skipped="0">
-    <testcase classname="Feature: Goto home pages" name="Scenario: Check homepages will be opened">
-      <failure message="Failed Step: Given Homepage for www.google.com&#xA;Message: Timed out while waiting for element &lt;body> to be present for 1000 milliseconds. - Expected &quot;visible&quot; but got: &quot;not found&quot;&#xA;    at Object.windowsMaximize (/home/fmelandri/Projects/spikes/slenium-grid-tests/wrappers/api.js:96:18)&#xA;    at Page.openBrowser (/home/fmelandri/Projects/spikes/slenium-grid-tests/page-objects/home/homepage.js:14:14)&#xA;    at /home/fmelandri/Projects/spikes/slenium-grid-tests/features/step_definitions/given/index.js:7:14&#xA;    at executeInNightwatchContext.next (&lt;anonymous>)&#xA;    at code.next (&lt;anonymous>)&#xA;    at new Promise (&lt;anonymous>)&#xA;Where: /home/fmelandri/Projects/spikes/slenium-grid-tests/features/step_definitions/given/index.js:2"/>
-    </testcase>
+  <testsuite name="Feature: Goto home pages" tests="2" failures="0" errors="0" skipped="0">
+    <testcase classname="Feature: Goto home pages" name="Scenario: Check homepages will be opened"/>
+    <testcase classname="Feature: Goto home pages" name="Scenario: Check homepages will be opened"/>
   </testsuite>
 </testsuites>

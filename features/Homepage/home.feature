@@ -6,7 +6,10 @@ Feature: Goto home pages
     Scenario Outline: Check homepages will be opened
 
     Given Homepage for <homePage>
+    When homepage is showed
+    Then I except the url contains <homePage>
         
         Examples:
             | homePage          | 
             | www.google.com    |
+            | www.bing.com    |            
