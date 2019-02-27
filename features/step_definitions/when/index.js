@@ -4,6 +4,6 @@ module.exports = function () {
             .page
             .home
             .homepage()
-            .isLoaded()
+            .isLoaded();
     });
 };
