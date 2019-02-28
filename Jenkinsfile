@@ -1,8 +1,11 @@
-def dockerUtils = load ('./pipeline/docker.groovy')
+def dockerUtils
 
-script {
-    env.DOCKER_IMG = 'test'
-}   
+node {
+    dockerUtils = load ('./pipeline/docker.groovy')
+    script {
+        env.DOCKER_IMG = 'test'
+    }   
+} 
 
 pipeline {
     agent any
