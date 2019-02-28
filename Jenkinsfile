@@ -1,9 +1,9 @@
+script {
+    env.DOCKER_IMG = 'test'
+}   
+
 pipeline {
     agent any
-
-    script {
-        env.DOCKER_IMG = 'test'
-    }   
 
     stages {
         stage ("checkout") {
@@ -13,6 +13,7 @@ pipeline {
                 }
             }
         }
+
         stage ("prepare") {
             steps {
                 dir("app") {
@@ -20,6 +21,7 @@ pipeline {
                 }
             }
         }
+
         stage ("test") {
             steps {
                 dir("app") { 
