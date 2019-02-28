@@ -1,3 +1,5 @@
+def dockerUtils = loadScript ('./pipeline/docker.groovy')
+
 script {
     env.DOCKER_IMG = 'test'
 }   
@@ -17,7 +19,7 @@ pipeline {
         stage ("prepare") {
             steps {
                 dir("app") {
-                    sh 'make setup_docker'
+                    dockerUtils.buildDockerImage()
                 }
             }
         }
