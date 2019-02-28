@@ -1,10 +1,19 @@
 pipeline {
     agent any
-    
+
     stages {
         stage ("checkout") {
             steps {
-                checkout scm
+                dir("app") {
+                    checkout scm
+                }
+            }
+        }
+        stage ("test") {
+            steps {
+                dir("app") {
+                    sh 'node nightwatch'
+                }
             }
         }
     }
