@@ -12,8 +12,6 @@ pipeline {
             steps {
                 dir("app") {
                     checkout scm
-
-                    dockerUtils = load ('./pipeline/docker.groovy')
                 }
             }
         }
@@ -22,6 +20,7 @@ pipeline {
             steps {
                 dir("app") {
                     script {
+                        dockerUtils = load ('./pipeline/docker.groovy')
                         dockerUtils.buildDockerImage(env.DOCKER_IMG)
                     }
                 }
