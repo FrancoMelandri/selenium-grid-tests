@@ -19,7 +19,9 @@ pipeline {
         stage ("prepare") {
             steps {
                 dir("app") {
-                    dockerUtils.buildDockerImage()
+                    script {
+                        dockerUtils.buildDockerImage()
+                    }
                 }
             }
         }
