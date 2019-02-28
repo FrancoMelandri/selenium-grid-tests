@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    script {
+        env.DOCKER_IMG = 'test'
+    }   
+
     stages {
         stage ("checkout") {
             steps {
@@ -9,10 +13,16 @@ pipeline {
                 }
             }
         }
-        stage ("test") {
+        stage ("prepare") {
             steps {
                 dir("app") {
-                    sh 'node nightwatch'
+                    sh 'make setup_docker'
+                }
+            }
+        }
+        stage ("test") {
+            steps {
+                dir("app") { 
                 }
             }
         }
