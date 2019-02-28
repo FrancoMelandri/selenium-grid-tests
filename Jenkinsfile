@@ -1,11 +1,8 @@
 def dockerUtils
 
-node {
-    dockerUtils = load ('./pipeline/docker.groovy')
-    script {
-        env.DOCKER_IMG = 'test'
-    }   
-} 
+script {
+    env.DOCKER_IMG = 'test'
+}   
 
 pipeline {
     agent any
@@ -15,6 +12,8 @@ pipeline {
             steps {
                 dir("app") {
                     checkout scm
+
+                    dockerUtils = load ('./pipeline/docker.groovy')
                 }
             }
         }
