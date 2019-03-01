@@ -22,8 +22,7 @@ pipeline {
                         try {
                             sh "docker stop ${env.DOCKER_IMG}"
                             sh "docker rm ${env.DOCKER_IMG}"
-                        } catch {
-
+                    	} catch(err) {
                         }
 
                         sh "docker build --pull=true -t ${env.DOCKER_IMG} ."
