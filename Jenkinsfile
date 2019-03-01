@@ -26,7 +26,7 @@ pipeline {
                         }
 
                         sh "docker build --pull=true -t ${env.DOCKER_IMG} ."
-                        sh "docker run --network=host -td --restart unless-stopped --tmpfs /tmp:exec --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name ${env.DOCKER_IMG} ${env.DOCKER_IMG}"
+                        sh "docker run --rm --network=host -td --restart unless-stopped --tmpfs /tmp:exec --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name ${env.DOCKER_IMG} ${env.DOCKER_IMG}"
                         sh "docker cp ./ ${env.DOCKER_IMG}:/opt/task"
                     }
                 }
@@ -44,7 +44,7 @@ pipeline {
             }
         }
 
-        stage ("Running test") {
+        stage ("Running Chrome test") {
             steps {
                 dir("app") {
                     script {
