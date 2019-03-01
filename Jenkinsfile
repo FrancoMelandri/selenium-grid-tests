@@ -37,8 +37,8 @@ pipeline {
             steps {
                 dir("app") {
                     script {
-                        sh "docker exec -t ${env.DOCKER_IMG} bash -c \"npm run lint\""
-                        sh "docker exec -t ${env.DOCKER_IMG} bash -c \"npm test\""
+                        sh "docker exec -t ${env.DOCKER_IMG} bash -c \"./node_modules/.bin/gulp lint\""
+                        sh "docker exec -t ${env.DOCKER_IMG} bash -c \"./node_modules/.bin/jest\""
                     }
                 }
             }
