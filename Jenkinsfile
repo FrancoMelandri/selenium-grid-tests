@@ -48,7 +48,7 @@ pipeline {
             steps {
                 dir("app") {
                     script {
-                        sh "docker exec -t ${env.DOCKER_IMG} bash -c \"node nightwatch\""
+                        sh "docker exec -t ${env.DOCKER_IMG} bash -c \"./node_modules/.bin/nightwatch\""
                     }
                 }
             }
