@@ -37,8 +37,8 @@ pipeline {
             steps {
                 dir("app") {
                     script {
-                        sh "docker exec -t ${env.DOCKER_IMG} bash -c \"./node_modules/.bin/gulp lint\""
-                        sh "docker exec -t ${env.DOCKER_IMG} bash -c \"./node_modules/.bin/jest\""
+                        sh "docker exec -t ${env.DOCKER_IMG} ./node_modules/.bin/gulp lint"
+                        sh "docker exec -t ${env.DOCKER_IMG} ./node_modules/.bin/jest"
                     }
                 }
             }
@@ -48,7 +48,7 @@ pipeline {
             steps {
                 dir("app") {
                     script {
-                        sh "docker exec -t ${env.DOCKER_IMG} bash -c \"./node_modules/.bin/nightwatch\""
+                        sh "docker exec -t ${env.DOCKER_IMG} ./node_modules/.bin/nightwatch"
                     }
                 }
             }
