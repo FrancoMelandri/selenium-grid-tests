@@ -19,8 +19,12 @@ pipeline {
             steps {
                 dir("app") {
                     script {
-                        sh "docker stop ${env.DOCKER_IMG}"
-                        sh "docker rm ${env.DOCKER_IMG}"
+                        try {
+                            sh "docker stop ${env.DOCKER_IMG}"
+                            sh "docker rm ${env.DOCKER_IMG}"
+                        } catch {
+
+                        }
 
                         sh "docker build --pull=true -t ${env.DOCKER_IMG} ."
                         sh "docker run -td --restart unless-stopped --tmpfs /tmp:exec --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name ${env.DOCKER_IMG} ${env.DOCKER_IMG}"
@@ -36,6 +40,16 @@ pipeline {
                     script {
                         sh "docker exec -t ${env.DOCKER_IMG} bash -c \"npm run lint\""
                         sh "docker exec -t ${env.DOCKER_IMG} bash -c \"npm test\""
+                    }
+                }
+            }
+        }
+
+        stage ("Running test") {
+            steps {
+                dir("app") {
+                    script {
+                        sh "docker exec -t ${env.DOCKER_IMG} bash -c \"node nightwatch\""
                     }
                 }
             }
