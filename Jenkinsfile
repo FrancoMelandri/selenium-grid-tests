@@ -19,6 +19,9 @@ pipeline {
             steps {
                 dir("app") {
                     script {
+                        sh "docker stop ${env.DOCKER_IMG}"
+                        sh "docker rm ${env.DOCKER_IMG}"
+
                         sh "docker build --pull=true -t ${env.DOCKER_IMG} ."
                         sh "docker run -td --restart unless-stopped --tmpfs /tmp:exec --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name ${env.DOCKER_IMG} ${env.DOCKER_IMG}"
                         sh "docker cp ./ ${env.DOCKER_IMG}:/opt/task"
