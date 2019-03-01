@@ -27,9 +27,13 @@ pipeline {
             }
         }
 
-        stage ("test") {
+        stage ("linting and test") {
             steps {
-                dir("app") { 
+                dir("app") {
+                    script {
+                        sh "docker exec -t ${env.DOCKER_IMG} bash -c \"npm run lint\""
+                        sh "docker exec -t ${env.DOCKER_IMG} bash -c \"npm test\""
+                    }
                 }
             }
         }
