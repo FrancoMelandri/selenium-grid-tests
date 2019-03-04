@@ -14,4 +14,4 @@ Feature: Show home pages
             | www.google.com        | www.google.com        | GOOGLE        |
             | www.bing.com          | www.bing.com          | BING          |
             | www.microsoft.com     | www.microsoft.com     | MICROSOFT     |
-            | www.ibm.com           | www.redhat.com           | IBM           |
+            | www.ibm.com           | www.ibm.com           | IBM           |
