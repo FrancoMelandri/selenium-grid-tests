@@ -54,16 +54,23 @@ Grid can also accept additional nodes launched outside Jenkins.
 
 ## Local environment
 
-Setting up a master slave installation in local to test selenium grid
+Setting up a master slave installation in local to test selenium grid.
+All the installation is based on a list of docker container, one for jenkins and the other for the selenium nodes.
 
-First of all launch a Jenkins server using docker.
+In order to let all the container talk to each other we have to insert a new entry in the hosts file with the IP address of the docker Jenkins just launched using a name you want
 
-Create a docker network
+```bash
+172.18.0.2 jenkins
+```
+
+
+Create a docker network to group all the docker containers
 
 ```bash
 > docker network create grid
 ```
 
+and then launch a Jenkins server using docker
 
 
 ```bash
@@ -80,17 +87,13 @@ Create a docker network
     jenkinsci/blueocean
 ```
 
+Once the Jenkins master is uop and running we have to in install the Selenium plugin for Jenkins.
 In this way we are exposing the jenkins server, the agents and the Selenium grid.
 
 You have to change the URL of the jenkins server from http://localhost:8080 to http://jenkins:8080
 
-Now you have to insert a new entry in the hosts file with the IP address of the docker Jenkins  just launched using a name you want
 
-```bash
-172.18.0.2 jenkins
-```
-
-An then you can start the docker image of a slave node in this way (for chrome)
+Afer the start-uo of Jenkins master we can start the docker image of a slave node in this way (for chrome)
 
 ```bash
 > docker run \
