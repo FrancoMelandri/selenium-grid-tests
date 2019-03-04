@@ -20,12 +20,16 @@ module.exports = {
     page_objects_path: 'page-objects',
     live_output: true,
     disable_colors: false,
+    // test_workers: {
+    //     enabled: true,
+    //     workers: 'auto'
+    // },
 
     selenium: {
-        start_process: true,
+        start_process: false,
         server_path: seleniumServer.path,
-        host: '127.0.0.1',
-        port: 4445
+        host: 'jenkins',
+        port: 4444
     },
 
     test_settings: {
@@ -36,7 +40,7 @@ module.exports = {
                 path: 'screenshots/default'
             },
             launch_url: 'http://localhost',
-            selenium_port: 4445,
+            selenium_port: 4444,
             selenium_host: 'localhost',
             silent: true,
             desiredCapabilities: {
