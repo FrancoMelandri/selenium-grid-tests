@@ -7,11 +7,11 @@ Feature: Show home pages
 
     Given Homepage for <homePage>
     When homepage is showed
-    Then I except the url contains <homePage>
+    Then I except the url contains <realHomePage>
         
         Examples:
-            | homePage              | title         |
-            | www.google.com        | GOOGLE        |
-            | www.bing.com          | BING          |
-            | www.microsoft.com     | MICROSOFT     |
-            | www.ibm.com           | IBM           |
+            | homePage              | realHomePage          | title         |
+            | www.google.com        | www.google.com        | GOOGLE        |
+            | www.bing.com          | www.bing.com          | BING          |
+            | www.microsoft.com     | www.microsoft.com     | MICROSOFT     |
+            | www.ibm.com           | www.redhat.com           | IBM           |
