@@ -121,7 +121,7 @@ Created a little example test based on nightwatch and nightwatch cucumber.
 
 The most important thing is to configure in the right way nightwatch in order to let the test run in the node test of the grid. So take a look to the file *nightwatch.conf.js*
 
-```json
+```
     selenium: {
         start_process: false,
         server_path: seleniumServer.path,
@@ -132,6 +132,16 @@ The most important thing is to configure in the right way nightwatch in order to
 
 Setting the flag start_process as false we are going to indicate the test must use the remote jenkins hub. 
 
+You can also run the project in you dev environment:
+- install all the npm packages using 
+```
+npm install
+```
+
+- run the test using 
+```
+node nightwatch -e chrome
+```
 
 
 ## Pipeline
