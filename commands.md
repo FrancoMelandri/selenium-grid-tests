@@ -1,4 +1,4 @@
-- docker buil -t enkins/selenium .
+- docker build -t jenkins/selenium .
 
 - docker network create grid
 
