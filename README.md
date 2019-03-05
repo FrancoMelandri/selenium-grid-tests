@@ -117,7 +117,7 @@ So now we ca start some selenium slave in order to attach to the hub and the hub
 
 ## Example
 
-Created a little example test based on nightwatch and nightwatch cucumber.
+Created a little example test based on nightwatch and nightwatch cucumber (http://nightwatchjs.org/)
 
 The most important thing is to configure in the right way nightwatch in order to let the test run in the node test of the grid. So take a look to the file *nightwatch.conf.js*
 
