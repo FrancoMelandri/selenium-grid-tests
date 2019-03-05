@@ -68,6 +68,14 @@ services:
       - /dev/shm:/dev/shm
     environment:
       - HUB_HOST=jenkins
+  selenium_firefox:
+    depends_on:
+      - jenkins
+    image: selenium/node-firefox:3.141.59-iron
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      - HUB_HOST=jenkins
 
 
 volumes:
