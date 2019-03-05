@@ -1,0 +1,279 @@
+#============================================================================
+# octane.yml: All below parameters are read by OCTANE server when server starts
+#============================================================================
+#
+# +--------------------------------------------------------+
+# | IMPORTANT:                                             |
+# +--------------------------------------------------------+
+# |   1. Must add SPACE after ':' delimiter                |
+# |   2. Do not use '#' character in values                |
+# |   3. Check wrapper.log for parsing errors of this file |
+# +--------------------------------------------------------+
+#
+# Tip: Search the web for "online YAML to JSON" and use it to validate file content.
+#
+#============================================================================
+
+#============================================================================
+# The heap size to use for Octane server.
+#============================================================================
+# Heap size should be set to half of available server memory on a dedicated
+# server. Heap size should not exceed 31GB.  Values should be specified in MB
+# (e.g. 4096 for 4G)
+# default is 4096
+heapSize: 4096
+
+#============================================================================
+# Cluster configuration
+#============================================================================
+#Use this setting to configure cluster nodes.
+#The nodes can be specified using host names or IPs in a comma-separated list.
+#e.g. server1.domain.com,server2.domain.com,server3.domain.com or 12.12.12.12,12.12.12.13,12.12.12.13
+#Leave 'nodes' empty and set 'isCluster' to "false" to configure a standalone server.
+cluster:
+  isCluster: false
+  nodes:
+
+#============================================================================
+# Proxy
+#============================================================================
+#Proxy settings used by Octane server to connect to outside server.
+#This should be configured if your environment requires a proxy to connect to outside resources.
+#clearing the host will disable proxy
+proxy:
+  http:
+    host: 
+    port: 
+  https:
+    host: 
+    port: 
+  user:
+  password:
+  nonProxyHosts: 
+
+#============================================================================
+# Server ports
+#============================================================================
+#Ports used to server the application.
+#Leaving any of the ports empty will disable the access via specified http schema
+server:
+  httpPort: 8080
+  httpsPort: 8443
+
+#============================================================================
+#authenticationType - Possible values:
+#============================================================================
+#  internal - use ALM Octane authentication
+#  ldap - use ldap authentication with the supplied parameter in this file
+#  sso - use customer IDP
+#  default is internal
+authenticationType:
+
+#============================================================================
+# LDAP settings (in case authenticationType is 'ldap')
+#============================================================================
+# connectionTimeout - optional. in seconds - default is 30 seconds
+# adminDn - The LDAP authentication identifiers for the user that logs in to the server following configuration of LDAP authentication.
+#               example: adminDn: CN=my user,CN=Users,DC=test,DC=net
+#
+# Below parameters should be given for each server:
+#     host - LDAP server host. You can specify the host by IP or DNS.
+#     port - Port used by the LDAP server.
+#     isSsl - Instructs ALM Octane to use secure LDAP protocol. Possible values: Y, y, N or n
+#     baseDirectories - A list of User Base DNs that define which subtree to search users in. When not supplied it affects the LDAP server accessing performance
+#     baseFilters - A list of User Filters in LDAP format that allows to select only those users under the Base DN that match certain criteria
+#                   Default value is (objectClass=*)
+#     baseDirectories and the baseFilters are important to improve ldap server access performance
+#     description - Optional. A description for the LDAP server, can be a name that distinguish between the LDAP servers
+#
+#     authentication section - in this section define the LDAP authentication details
+#     method - Mandatory. 'simple' - user-password OR 'anonymous' - without user-password
+#     user - Mandatory when using the simple LDAP authentication method. The user name used to access the LDAP server.
+#     password - Mandatory when using the simple LDAP authentication method. The password of the user used to access the LDAP server.
+#
+#     mapping section - in this section map Octane attribute names to your LDAP attributes name according to your LDAP vendor
+#     fill in values for your LDAP server attributes
+#     dn - A dn is a sequence of relative distinguished names (RDN) connected by commas
+#       example: dn: dn, entryDN (OpenLDAP), distinguishedName (AD)
+#     uid - An uid is a unique user identifier
+#       example: uid: entryUUID (OpenLDAP), objectGUID (AD)
+#     firstName - example: firstName: givenName
+#     lastName - example: lastName: sn
+#     fullName - Optional. example: fullName: cn
+#     logonName - example: sAMAccountName, mail (AD) or uid (OneLDAP)
+#     email - example: email: mail
+#     phone1 - Optional, phone1: 97232123
+#
+# Example:
+# ========
+#
+# ldap:
+#   connectionTimeout:
+#   adminDn: cn=ben,dc=maxcrc,dc=com
+#   servers:
+#   - host: 28.31.215.104
+#     port: 389
+#     isSsl: N
+#     baseDirectories:
+#     - dc=maxcrc,dc=com
+#     - ou=dummy_users,dc=maxcrc,dc=com
+#     baseFilters:
+#     - (objectClass=*)
+#     description:
+#     authentication:
+#       method: simple
+#       user: cn=tal,dc=maxcrc,dc=com
+#       password: aaaaaa
+#     mapping:
+#       dn: entryDN
+#       uid: entryUUID
+#       firstName: givenName
+#       lastName: sn
+#       fullName: cn
+#       logonName: mail
+#       email: mail
+#       phone1:
+#   - host: 17.20.204.93
+#     port: 389
+#     isSsl: N
+#     baseDirectories:
+#     - dc=maxcrc,dc=com
+#     - ou=dummy_users,dc=maxcrc,dc=com
+#     baseFilters:
+#     - (objectClass=*)
+#     description: my organization AD ldap
+#     authentication:
+#       method: anonymous
+#       user:
+#       password:
+#     mapping:
+#       dn: distinguishedName
+#       uid: objectGUID
+#       firstName: givenName
+#       lastName: sn
+#       fullName: cn
+#       logonName: mail
+#       email: mail
+#       phone1: telephoneNumber
+#============================================================================
+# To add another LDAP server all the parameters from 'host' including the hyphen
+# until the phone1 parameter (inclusive) should be duplicated.
+#============================================================================
+ldap:
+  connectionTimeout:
+  adminDn:
+  servers:
+  - host: 
+    port: 
+    isSsl:
+    baseDirectories:
+    baseFilters:
+    - (objectClass=*)
+    description:
+
+    authentication:
+      method: anonymous
+      user:
+      password:
+
+    mapping:
+      dn:
+      uid:
+      firstName:
+      lastName:
+      fullName:
+      logonName:
+      email:
+      phone1:
+
+#==============================================================================
+# sp: SSO configuration details
+#
+# Required configuration
+# ======================
+#   sso.key-pair.alias: The alias used for the key pair. This key pair used by IDM (OSP) for signing / encrypting authentication information.
+#   sso.key-pair.pwd: The password used to encrypt the key pair
+#   sso.keystore.file: The absolute path to the key store file. File should be in the PKCS12 format. May be changed to jks by specifying type using "sso.oauth-keystore.type: jks" property.
+#   sso.keystore.pwd: The password used to protect the key store file.
+#   sso.oauth.client.id: The oauth client id. Can be set to any value.
+#   sso.oauth.client.secret: The oauth client secret. Can be set to any value. Should be complex and hard to guess.
+#   sso.saml.mapping.username: Defines mapping between the Octane user name and IDP user name, sent in SAML authentication response. By default configured to SAML subject ID.
+#   sso.saml2.idp.metadata-url: The url of the SAML metadata descriptor resource to be fetched and used to configure trust with the IDP. Octane will not load if URL is not available.
+#     ****OR****
+#   sso.saml2.idp.metadata: base64 encoded xml of the SAML metadata descriptor in case the IDP cannot be queried directly.
+#
+#   If both metadata and metadata-url are specified than metadata value used.
+#
+# Frequently used configuration (optional)
+# ======================
+#   sso.logging.level: Logging level. Default is WARNING. Possible Values: SEVERE, WARNING, INFO, ALL
+#   sso.logging.file.dir: The directory to create the sso log files in. Default is <log folder>/osp
+#   sso.oauth.authentication.timeout.seconds: Access token expiration timeout in seconds. Default value: 10800 (3 hours).
+#
+# User info configuration (optional)
+# ======================
+#   sso.saml.mapping.uuid: Defines friendly name of SAML attribute which mapped to the uuid field of Octane user. Default is "uuid"
+#   sso.saml.mapping.mail: Defines friendly name of SAML attribute which mapped to the email field of Octane user. Default is "mail"
+#   sso.saml.mapping.firstName: Defines friendly name of SAML attribute which mapped to the first name field of Octane user. Default is "firstName"
+#   sso.saml.mapping.lastName: Defines friendly name of SAML attribute which mapped to the last name field of Octane user. Default is "lastName"
+#   sso.saml.mapping.fullName: Defines friendly name of SAML attribute which mapped to the full name field of Octane user. Default is "fullName"
+#
+#
+# Information about additional properties may be found in the Octane documentation
+#
+#==============================================================================
+sp:
+  sso.key-pair.alias:
+  sso.key-pair.pwd:
+  sso.keystore.file:
+  sso.keystore.pwd:
+  sso.oauth.client.id:
+  sso.oauth.client.secret:
+  sso.login.saml2.idp.metadata-url:
+  sso.oauth.authentication.timeout.seconds: 10800
+  sso.saml.mapping.username: "{$id}"
+
+#============================================================================
+# license: License details: can be almSharing, standalone
+#   mode: can be one of almSharing/standalone
+#   almSharing: Relevant only when mode is almSharing.
+#                Connection details to ALM for shared model license
+#
+# Example:
+# ========
+# #for almSharing mode:
+# license:
+#   trialEdition: ENTERPRISE #must be TEAM or ENTERPRISE or can be empty/not exists if trial already installed. indicate the TRIAL license type. affect ONLY on the FIRST server startup.
+#   mode: almSharing
+#   almSharing: #Connection details to ALM for shared model license
+#       url: http://myvm54321.magme.net:8080/qcbin
+#       almIntegrationUser: octane
+#       almIntegrationPassword: ababab
+#
+# #for standalone mode:
+# license:
+#   mode: standalone
+#============================================================================
+license:
+  trialEdition: ENTERPRISE
+  mode: standalone
+  almSharing: #Connection details to ALM for shared model license
+      url:
+      almIntegrationUser:
+      almIntegrationPassword:
+
+#============================================================================
+# oracle_database: specified whether or not to override the default sorting behavior of the oracle database.
+# default is 'no'.
+# Example:
+# ========
+# for overriding the default sorting behavior with 'BINARY_CI':
+# oracle_database:
+#   useDefaultSort: no
+#
+# for keeping the sorting behavior defined for the database server \ schema:
+# oracle_database:
+#   useDefaultSort: yes
+#============================================================================
+oracle_database:
+  useDefaultSort: no
