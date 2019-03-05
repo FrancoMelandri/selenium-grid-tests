@@ -1,0 +1,76 @@
+version: "3"
+services:
+  octane_oracle:
+    build:
+      context: ./context/docker-oracle-xe-11g-master
+    image: bmed/oracle-octane
+    ports:
+      - 8521:1521
+    volumes:
+      - ./volume/octane_oracle/oracledata:/u01/app/oracle
+  octane_es:
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - http.host=0.0.0.0
+      - transport.host=0.0.0.0
+      - xpack.security.enabled=false
+      - cluster.name=elasticsearch
+      - bootstrap.memory_lock=true
+      - discovery.type=single-node
+      - cluster.routing.allocation.disk.threshold_enabled=false
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.6
+    ports:
+    - 9300
+    - 9200:9200
+    cap_add:
+      - IPC_LOCK
+    ulimits:
+      nofile:
+        soft: 20000
+        hard: 40000
+      memlock:
+        soft: 68719476736
+        hard: 68719476736
+  octane:
+    depends_on:
+    - octane_oracle
+    - octane_es
+    ports:
+    - 8080:8080
+    - 5701
+    volumes:
+      - ./volume/octane/conf:/opt/octane/conf
+      - ./volume/octane/log:/opt/octane/log
+      - ./volume/octane/repo:/opt/octane/repo
+    environment:
+      DISABLE_VALIDATOR_MEMORY: 'true'
+    env_file:
+      octane.env
+    #build:
+    #  context: ./context/octane
+    #image: bmed/octane
+    image: lifecyclemanagement/octane:onprem
+  jenkins:
+    user: root
+    ports:
+      - 8088:8080 
+      - 50000:50000 
+      - 4444:4444
+    volumes:
+      - jenkinsdata:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    image: jenkins/selenium
+  selenium_chrome:
+    depends_on:
+      - jenkins
+    image: selenium/node-chrome:3.141.59-iron
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      - HUB_HOST=jenkins
+
+
+volumes:
+  jenkinsdata:
+
+
