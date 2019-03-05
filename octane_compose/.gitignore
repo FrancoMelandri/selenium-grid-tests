@@ -1,0 +1,32 @@
+## IntelliJ IDEA stuff.
+.idea/
+*.iml
+
+## Docker stuff.
+/octane/docker/volumes/*
+/octane/docker/volumes/octane/conf/*
+/octane/docker/volumes/octane/log/*
+/octane/docker/volumes/octane/repo/*
+/octane/docker/volumes/octane_oracle/oracledata/*
+/octane/docker/volumes/octane_synchronize/temp/*
+/oracle-standalone/docker/volumes/oracle/oracledata/*
+
+### Keep the following "empty" folders.
+!/octane/docker/volumes/octane/
+!/octane/docker/volumes/octane/conf/.gitignore
+!/octane/docker/volumes/octane/log/.gitignore
+!/octane/docker/volumes/octane/repo/.gitignore
+!/octane/docker/volumes/octane_oracle/
+!/octane/docker/volumes/octane_oracle/oracledata/.gitignore
+!/octane/docker/volumes/octane_synchronize/
+!/octane/docker/volumes/octane_synchronize/temp/.gitignore
+!/oracle-standalone/docker/volumes/oracle/
+!/oracle-standalone/docker/volumes/oracle/oracledata/.gitignore
+
+## Vagrant.
+.vagrant/
+
+## Mac OS X.
+.DS_Store
+
+/tmp/
