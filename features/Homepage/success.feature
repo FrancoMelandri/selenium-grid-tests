@@ -1,4 +1,4 @@
-Feature: Show home pages
+Feature: Show Sucess home pages
 
     As a user
     I want to see the homepages
