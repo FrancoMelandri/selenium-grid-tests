@@ -1,0 +1,1 @@
+node nightwatch -e chrome

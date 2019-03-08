@@ -7,7 +7,7 @@ Feature: Show Failure home pages
 
     Given Homepage for <homePage>
     When homepage is showed
-    Then I except the url contains <realHomePage>
+    Then I expect the url contains <realHomePage>
         
         Examples:
             | homePage              | realHomePage          | title         |
